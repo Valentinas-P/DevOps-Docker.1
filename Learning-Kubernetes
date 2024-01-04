@@ -48,5 +48,12 @@ jobs:
     - E
     - F
 explanation --->:
+YAML allows you to have a list inside another list which it shown above this text of how it should be written in the .yaml or .yml file extension.
+---------------------------------------------------]
+[---------- Create a namespace ----------
+kubectl apply -f /path/to/your/file/file.yaml ---> This will create a new namespace if the file.yaml has a correct format of YAML.
+kubectl delete -f /path/to/your/file/file.yaml ---> This will delete a file called file.yaml, from the list of namespaces that exist in the docker.
+---------------------------------------------------]
+[---------- Deploy an application ----------
 
 ---------------------------------------------------]
