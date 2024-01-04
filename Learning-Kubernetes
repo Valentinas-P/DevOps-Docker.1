@@ -64,5 +64,18 @@ kubectl get pods -n developments ---> This command will show all the pods that a
 kubectl delete pod [name of the pod] -n [name of namespace] ---> This command will delete a pod that is in a specific namespace is running. e.g. [kubectl delete pod pod-info-deployment-3435435sfd-kkaas -n development]
 ---------------------------------------------------]
 [---------- Checking health of the pod by checking logs ---------
-
+kubectl describe pod [name of the pod] -n development ---> This command will show you if the pod is healthy or of it have some errors and how fix it. e.g. [kubectl describe pod pod-info-deployment-34543643-234gf -n development]
+----------------------------------------------------------------]
+[---------- Checking if your application is working ---------
+kubectl get pods -n development -o wide ---> This command is used to check the available and running pods and the second part '-o wide' allows us to see extra info about the pod.
+kubectl exec -it [name of the pod] -- /bin/sh ---> This command will run the kubectl exec, next -it means want to get access to the pod's name, and '/bin/sh' used for specifying what shell it will use.
+          inside the container some commands:
+          [To check if its working properly write this 'wget' and see if any wget commands pop-up.]
+          wget [IP_ADDRESS:YourSELECTEDPORTFROMCONTAINER] this will get the IP address of the pod and store it in a file called index.html, to check you can write cat index.html.
+          exit ---> This command will exit the container
+----------------------------------------------------------------]
+[---------- View your application logs ---------
+steps:
+    1. kubectl get pods [name of the pod] -n development ---> Copy the pod name that you want to check the application log of it
+    2. kubectl logs [name of the pod] -n development ---> This command allows you to check if the application pod is healthy and running or if it have issues.
 ----------------------------------------------------------------]
