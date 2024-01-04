@@ -1,0 +1,52 @@
+-----------------------------------------------------------------------------------------------------
+----------------------------  Kubernetes - 2024 ------------------------------------
+-----------------------------------------------------------------------------------------------------
+
+What is kubernetes? ¬ Kubernetes makes decisions about where and how containerised applications are launched on a server, when to scale up or down the number of applications
+                      replicas, and what to do when an application or server stops working. And it's an open source project.
+
+-----------------------------------------------------------------------------------------------------
+---------------------------- Kubernetes and the Cloud-Native Ecosystem ------------------------------
+-----------------------------------------------------------------------------------------------------
+
+What's containers in kubernetes? ¬ A technology that bundles the code for an application, and the configuration required to run the code itself, in one unit.
+Container Advantages ¬
+                      1. Portable - Run on any Linux, Windows, or macOS machine
+                      2. Uses less CPUs and memory, saving money
+                      3. Self-contained, can be spun up or down in seconds
+                      4. Create replications and scale up or down the replications
+
+What is cloud-native? ¬ Cloud-native technologies are open-source projects designed to let technologists use cloud computing services to automatically deploy and scale applications.
+
+[---------- Commands for kubernetes ----------
+kubectl get pods -A ¬ This will show every pods in every name space. These pods are how containers are run in Kubernetes and the Kubernetes itself.
+kubectl get services -A ¬ This command will show how the services are running in the cluster. It acts as load balancers within the cluster.
+---------------------------------------------------]
+
+-----------------------------------------------------------------------------------------------------
+---------------------------- Application Deployment -------------------------------------------------
+-----------------------------------------------------------------------------------------------------
+
+[---------- Reading & Writing YAML ----------
+What is YAML? ¬ It's a serialisation language, used for configuration files.
+
+Basic commands for YAML and explanation: ----
+# ¬ It means a start of the comment and its ignored by the computer
+--- ¬ Means the start of the document
+name: ¬ It means it a start of the key ['name' it has to have in the end ':' symbol.
+name: Kim Sci ¬ It means it starts with the key ['name'] and ends with the value ['Kim Sci']
+courses: ---> this is the name of the list that has 2 sequences inside.
+    - Learning Kub ---> This is sequence and sequence can have a list as it shows in this example.
+    - Kubernetes Packagae --> This is the second sequence of the list.
+Example of using two lists:
+jobs:
+  A: 1.25
+  B: 2.5
+  C: 3.1
+  titles:
+    - D
+    - E
+    - F
+explanation --->:
+
+---------------------------------------------------]
