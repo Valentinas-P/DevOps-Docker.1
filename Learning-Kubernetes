@@ -17,6 +17,7 @@ Container Advantages ¬
                       4. Create replications and scale up or down the replications
 
 What is cloud-native? ¬ Cloud-native technologies are open-source projects designed to let technologists use cloud computing services to automatically deploy and scale applications.
+Kubernetes allows to run multiple replicas of applications, and if one application stops working at least others are accepting traffic/data.
 
 [---------- Commands for kubernetes ----------
 kubectl get pods -A ¬ This will show every pods in every name space. These pods are how containers are run in Kubernetes and the Kubernetes itself.
@@ -55,5 +56,13 @@ kubectl apply -f /path/to/your/file/file.yaml ---> This will create a new namesp
 kubectl delete -f /path/to/your/file/file.yaml ---> This will delete a file called file.yaml, from the list of namespaces that exist in the docker.
 ---------------------------------------------------]
 [---------- Deploy an application ----------
-
+commands to start:
+kubectl get ns ¬ This will show your namespaces of docker
+kubectl apply -f deployment.yaml ---> This will deploy a file of a namespace to the docker where in the file it has been setup to deploy an application with other import info, e.g. containers, etc.
+kubectl get deployments -n development ---> This command will confirm all the deployments in the development namespace.
+kubectl get pods -n developments ---> This command will show all the pods that are running for the development namespace.
+kubectl delete pod [name of the pod] -n [name of namespace] ---> This command will delete a pod that is in a specific namespace is running. e.g. [kubectl delete pod pod-info-deployment-3435435sfd-kkaas -n development]
 ---------------------------------------------------]
+[---------- Checking health of the pod by checking logs ---------
+
+----------------------------------------------------------------]
