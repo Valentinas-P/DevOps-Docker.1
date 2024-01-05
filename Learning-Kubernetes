@@ -109,3 +109,8 @@ Rule: It's important to avoid outages of pods, which can lead to failing of runn
                     CPU: 150m
                     memory: 85k
 -----------------------------------------------------------------]
+
+[---------- Delete your Kubernetes objects and tear down your cluster --
+kubectl delete -f [name of the pod] ---> This command will delete the current running pod.
+minikube delete ---> This command will delete the current running cluster from docker.
+-----------------------------------------------------------------------]
