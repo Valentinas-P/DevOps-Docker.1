@@ -96,5 +96,16 @@ kubectl get services -n development ---> This command will retrieve the services
                           minikube tunnel command creates a network route to expose LoadBalancer services.
 --------------------------------------------------------------------------------]
 [---------- Add resource requests and limits to your pod ---------
+Rule: It's important to avoid outages of pods, which can lead to failing of running applications.
+    To make sure it doesn't happen it's important to apply at services in resources section: Limits and Requests.
+        Example: In this example we ask kubernetes only to run pods that are min 150m of CPU and 85k (kilobytes) and max of 200m and 150k (kilobytes) of memory. --->
+                 With this example it will stop the outages of pods.
 
+                Resources:
+                  Requests:
+                    CPU: 200m
+                    memory: 150k
+                  Limits:
+                    CPU: 150m
+                    memory: 85k
 -----------------------------------------------------------------]
