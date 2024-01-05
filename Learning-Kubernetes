@@ -114,3 +114,47 @@ Rule: It's important to avoid outages of pods, which can lead to failing of runn
 kubectl delete -f [name of the pod] ---> This command will delete the current running pod.
 minikube delete ---> This command will delete the current running cluster from docker.
 -----------------------------------------------------------------------]
+
+-----------------------------------------------------------------------------------------------------
+---------------------------- Kubernetes Architecture ------------------------------------------------
+-----------------------------------------------------------------------------------------------------
+
+[---------- The Kubernetes control plane ---------------
+An instance of Kubernetes is called a cluster, each cluster has a control plane and at least one worker node.
+The purpose of Kubernetes is ¬ It overlooks the clusters (kubernetes) and makes sure nodes and pods are created, modified and deleted without any issues.
+  Kubernetes cluster diagram ----->
+      1. Most important is 'Kube API Server' component. ---> The API server exposes the Kubernetes API.
+                                                    - Pods, deployments, and the horizontal pod autoscaled have API endpoints.
+                                                    - Kubernetes API has a REST interface.
+                                                    - Kubernetes cluster cannot exist without Kube API Server.
+                                                    - kubectl and kubeadm are CLI tools to communicate with the Kubernetes API via HTTP requests.
+                                                        command to check all the Kubernetes objects and their API version: ---> kubectl api-resources
+      2. 'etcd' is an open-source component, and mostly available ---> it saves all data about the state of the cluster
+                                                    - Only the Kube API server can communicate directly with 'etcd'.
+                                                    - etcd also run as a pod and you can look at the logs
+                                                        command to check the log: ---> kubectl logs etcd-minikube -n kube-system | jq .
+      3. kube scheduler ---> which identifies newly created pods, that have not been assigned a worker node, and then chooses a node for the pod to run on.
+                                                    - kube scheduler is run as a pod.
+                                                    - run the logs to check how the pod works.
+      4. kube controller manager ---> Is a loop that run continually and checks the status of the cluster.
+                                                    - Checks all worker nodes are up and running.
+                                                    - Removes the broken node and replace it with a new worker node.
+      5. cloud controller manager ---> It allows to connect your cluster with a cloud provider's API, so it allows us to use cloud resources, e.g. AWS, GCP, Azure or any other public cloud.
+
+Most Kubernetes clusters run with a minimum of 3 working nodes.
+    - The worker nodes are where pods are scheduled and run
+    - each worker node has 3 components.
+        1. kubelet ---> - An component that runs on every worker node.
+                        - This component makes sure that containers are in a pod are running and healthy.
+                        - This component communicates directly with the API-server. And looking for newly assigned pods.
+        2. Container Runtime
+                        - A kublet assigned to new pod starts a container using Container Runtime Interface (CRI)
+                        - CRI enables the Kublet to create containers with the engines:
+                              - Containerd
+                              - CRI-O
+                              - Kata Containers
+                              - AWS Firecracker
+        3. Kube-proxy 
+                        - Makes sure pods and services can communicate
+                        - Each Kube-proxy communicates directly with the Kube-apiserver
+-------------------------------------------------------]
