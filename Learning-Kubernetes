@@ -74,8 +74,27 @@ kubectl exec -it [name of the pod] -- /bin/sh ---> This command will run the kub
           wget [IP_ADDRESS:YourSELECTEDPORTFROMCONTAINER] this will get the IP address of the pod and store it in a file called index.html, to check you can write cat index.html.
           exit ---> This command will exit the container
 ----------------------------------------------------------------]
-[---------- View your application logs ---------
+[---------- View your application logs -------------------------
 steps:
     1. kubectl get pods [name of the pod] -n development ---> Copy the pod name that you want to check the application log of it
     2. kubectl logs [name of the pod] -n development ---> This command allows you to check if the application pod is healthy and running or if it have issues.
-----------------------------------------------------------------]
+---------------------------------------------------------------]
+
+-------------------------------------------------------------------------------------------------
+---------------------------- Complex Application Deployment -------------------------------------
+-------------------------------------------------------------------------------------------------
+
+[---------- Expose your application to the internet with a LoadBalancer ---------
+What is kubernetes service? ¬ A Kubernetes service is a load balancer that directs traffic (data) from the internet to Kubernetes pods. A load balancer service has a public and static IP address. -->
+Address IP is a public IP that can change, and service IP needs to remain the same.
+
+Example of exposing your loadBalancer to the internet:
+kubectl apply -f service.yaml ---> This command will deploy services.yaml on the container
+kubectl get services -n development ---> This command will retrieve the services from 'development' namespace
+  open new tab terminal:
+    minikubes tunnel ---> This command is used to run Kubernetes clusters locally for development and testing purposes. --->
+                          minikube tunnel command creates a network route to expose LoadBalancer services.
+--------------------------------------------------------------------------------]
+[---------- Add resource requests and limits to your pod ---------
+
+-----------------------------------------------------------------]
